@@ -8,5 +8,3 @@ $action = $_GET['action'];
 
 $controller = new $controller();
 $controller->$action();
-
-http://localhost/ ---> PROJETO <---  index.php?controller=UsuarioController&action=inserir
