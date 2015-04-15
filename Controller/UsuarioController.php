@@ -36,5 +36,17 @@ class UsuarioController {
         
         include('View/Usuario/listar.php');
     }
+    
+    public function atualizar() {
+        
+        if($_GET['id']) {
+            $usuarioModel = new UsuarioModel();
+            $usuarioModel->setId($_GET['id']);
+            
+            $usuario = $usuarioModel->selectById();
+        }
+        
+        print_r($usuario);
+    }
 
 }

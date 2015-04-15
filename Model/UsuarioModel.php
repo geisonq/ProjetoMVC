@@ -8,6 +8,14 @@ class UsuarioModel extends Model {
     private $senha;
     public $email;
     private $id;
+    
+    function getId() {
+        return $this->id;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
 
     function getUsername() {
         return $this->username;
@@ -63,6 +71,20 @@ class UsuarioModel extends Model {
         $stmt->execute();
 
         return $stmt->fetchAll();
-     
+    }
+    
+        /**
+     * Método para retornar todos o usúario do banco de dados pelo id
+     * @access public
+     * @param 
+     * @return array
+     */
+    public function selectById() {
+        $stmt = $this->conexao->prepare("SELECT * FROM USUARIO where ID = :id");
+        $stmt->bindValue(':id', $this->getId());
+        
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

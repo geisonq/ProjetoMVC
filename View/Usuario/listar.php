@@ -15,7 +15,7 @@
           <td><?php echo $usuario['ID'] ?></td>
           <td><?php echo $usuario['USERNAME'] ?></td>
           <td><?php echo $usuario['EMAIL'] ?></td>
-          <td></td>
+          <td><a href="index.php?controller=UsuarioController&action=atualizar&id=<?php echo $usuario['ID'] ?>">Editar</a></td>
       </tr>
 
  <?php endforeach; ?>
