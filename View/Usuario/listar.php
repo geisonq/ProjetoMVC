@@ -1,6 +1,6 @@
 <h1>Lista Usuario</h1>
 
-<table>
+<table border="1">
     <tr>
         <td>Id</td>
         <td>Usuario</td>

@@ -9,4 +9,4 @@
     <input type="submit" value="SALVAR"> 
 </form>
 <br>
-<a href="index.php?controller=UsuarioController&action=listar">Voltar para listagem</a>
+<a href="index.php?controller=UsuarioController&action=listar">Voltar para listagem de usuario</a>

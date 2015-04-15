@@ -27,7 +27,6 @@ class UsuarioController {
     }
 
     public function deletar() {
-        
     }
 
     public function listar() {
