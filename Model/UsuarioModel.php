@@ -6,7 +6,7 @@ class UsuarioModel extends Model {
 
     private $username;
     private $senha;
-    private $email;
+    public $email;
     private $id;
 
     function getUsername() {
@@ -44,10 +44,12 @@ class UsuarioModel extends Model {
      */
     public function insert() {
         $stmt = $this->conexao->prepare("INSERT INTO USUARIO(username, senha, email) VALUES (:username, :senha, :email)");
+        
         $stmt->bindValue(':username', $this->getUsername());
         $stmt->bindValue(':senha', $this->getSenha());
         $stmt->bindValue(':email', $this->getEmail());
-        $stmt->execute();
+        
+        return $stmt->execute();
     }
     
     /**
@@ -60,17 +62,7 @@ class UsuarioModel extends Model {
         $stmt = $this->conexao->prepare("SELECT * FROM USUARIO");
         $stmt->execute();
 
-        $usuarios = array();
-
-        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-            $usuario['ID'] = $row->ID;
-            $usuario['NOMEUSUARIO'] = $row->USERNAME;
-            $usuario['EMAIL'] = $row->EMAIL;
-
-            $usuarios[] = $usuario;
-        }
-
-        return $usuarios;
+        return $stmt->fetchAll();
+     
     }
-
 }

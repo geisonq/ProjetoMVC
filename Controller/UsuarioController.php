@@ -4,20 +4,23 @@ include_once 'Model/UsuarioModel.php';
 
 class UsuarioController {
 
-    private $modeloUsuario;
+    private $usuarioModel;
 
     public function inserir() {
         $msg = FALSE;
         
         if(isset($_POST['username'])){
-            $modeloUsuario = new UsuarioModel();
-            $modeloUsuario->setUsername($_POST['username']);
-            $modeloUsuario->setEmail($_POST['email']);
-            $modeloUsuario->setSenha($_POST['senha']);
+            $usuarioModel = new UsuarioModel();
+            $usuarioModel->setUsername($_POST['username']);
+            $usuarioModel->setEmail($_POST['email']);
+            $usuarioModel->setSenha($_POST['senha']);
             
-            $modeloUsuario->insert();
-            
-            $msg = "Registro cadastrado com sucesso!";
+            if($usuarioModel->insert()) {
+                 $msg = "Registro cadastrado com sucesso!";
+            } else {
+                $msg = "Erro ao cadastrar!";
+            }
+                       
         }
         
         include('View/Usuario/inserir.php');
@@ -28,8 +31,8 @@ class UsuarioController {
     }
 
     public function listar() {
-        $modeloUsuario = new UsuarioModel();
-        $usuarios = $modeloUsuario->select();
+        $usuarioModel = new UsuarioModel();
+        $usuarios = $usuarioModel->select();
         
         include('View/Usuario/listar.php');
     }

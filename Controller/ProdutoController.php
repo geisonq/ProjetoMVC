@@ -3,9 +3,7 @@
 class ProdutoController {
     
     public function listar(){
-        include 'View/Produto/produtoLista.php';
-                
-                
+        include 'View/Produto/listar.php';           
     }
     
 }

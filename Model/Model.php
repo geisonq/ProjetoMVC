@@ -14,6 +14,8 @@ class Model {
                 "mysql:host={$this->host};dbname={$this->dbname}", 
                 $this->usuario, 
                 $this->senha);
+                
+        $this->conexao->setAttribute(PDO::ATTR_CASE, PDO::CASE_NATURAL);
     }
 
 }

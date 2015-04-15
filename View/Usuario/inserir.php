@@ -6,7 +6,7 @@
     Username<input type="text" name="username"><br>
     Senha<input type="password" name="senha"><br>
     Email<input type="email" name="email"><br>
-    
     <input type="submit" value="SALVAR"> 
 </form>
-
+<br>
+<a href="index.php?controller=UsuarioController&action=listar">Voltar para listagem</a>
