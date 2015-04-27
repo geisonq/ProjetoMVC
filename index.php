@@ -9,6 +9,8 @@ if(isset($_GET['controller'])){
     $controller = 'UsuarioController';
 }
 
+
+
 if(isset($_GET['action'])){
     $action = $_GET['action'];
 }else {
