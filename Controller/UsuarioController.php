@@ -27,6 +27,21 @@ class UsuarioController {
     }
 
     public function deletar() {
+        $msg = FALSE;
+        
+        if($_GET['id']) {
+            $usuarioModel = new UsuarioModel();
+            $usuarioModel->setId($_GET['id']);
+            
+            if($usuarioModel->delete()) {
+                 $msg = "Registro deletado com sucesso!";
+            } else {
+                $msg = "Erro ao deletar!";
+            }
+        }
+        
+        include('View/Usuario/deletar.php');
+        
     }
 
     public function listar() {
@@ -42,10 +57,10 @@ class UsuarioController {
             $usuarioModel = new UsuarioModel();
             $usuarioModel->setId($_GET['id']);
             
-            $usuario = $usuarioModel->selectById();
+                $usuario = $usuarioModel->selectById();
         }
         
-        print_r($usuario);
+        include('View/Usuario/atualizar.php');
     }
 
 }

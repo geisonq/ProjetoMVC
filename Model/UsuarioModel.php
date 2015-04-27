@@ -6,7 +6,7 @@ class UsuarioModel extends Model {
 
     private $username;
     private $senha;
-    public $email;
+    private $email;
     private $id;
     
     function getId() {
@@ -74,13 +74,23 @@ class UsuarioModel extends Model {
     }
     
         /**
+     * Método para deletar um usuário usúarios do banco de dados
+     */
+    public function delete() {
+        $stmt = $this->conexao->prepare("DELETE FROM USUARIO WHERE ID = :id");
+        $stmt->bindValue(':id', $this->getId());
+        
+        return $stmt->execute();
+    }
+    
+        /**
      * Método para retornar todos o usúario do banco de dados pelo id
      * @access public
      * @param 
      * @return array
      */
     public function selectById() {
-        $stmt = $this->conexao->prepare("SELECT * FROM USUARIO where ID = :id");
+        $stmt = $this->conexao->prepare("SELECT * FROM USUARIO WHERE ID = :id");
         $stmt->bindValue(':id', $this->getId());
         
         $stmt->execute();
