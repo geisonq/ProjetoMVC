@@ -1,15 +1,11 @@
 <?php
 include_once 'Controller/UsuarioController.php';
 
-
-
 if(isset($_GET['controller'])){
     $controller = $_GET['controller'];
 } else {
     $controller = 'UsuarioController';
 }
-
-
 
 if(isset($_GET['action'])){
     $action = $_GET['action'];

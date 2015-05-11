@@ -2,9 +2,9 @@
 
 <table border="1">
     <tr>
-        <td>Id</td>
-        <td>Usuario</td>
-        <td>Email</td>
+        <td><a href="index.php?controller=UsuarioController&action=listar&orderBy=id">Id</a></td>
+        <td><a href="index.php?controller=UsuarioController&action=listar&orderBy=username">Usuario</a></td>
+        <td><a href="index.php?controller=UsuarioController&action=listar&orderBy=email">Email</a></td>
         <td></td>
     </tr>
     
