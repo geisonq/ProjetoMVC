@@ -15,10 +15,10 @@
   <body id="login">
     <div class="container">
 
-      <form class="form-signin">
+        <form class="form-signin" method="POST" action="">
         <h2 class="form-signin-heading">Login</h2>
-        <input type="text" class="input-block-level" placeholder="Username">
-        <input type="password" class="input-block-level" placeholder="Password">
+        <input type="text" class="input-block-level" placeholder="Username" name="username">
+        <input type="password" class="input-block-level" placeholder="Password" name="senha">
         
         <button class="btn btn-large btn-primary" type="submit">Login</button>
       </form>

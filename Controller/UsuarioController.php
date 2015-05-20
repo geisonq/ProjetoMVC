@@ -5,15 +5,21 @@ class UsuarioController {
 
     public function login() {
 
+        if (isset($_POST['username']) && isset($_POST['senha'])) {
+            $usuarioModel = new UsuarioModel();
+            $usuarioModel->setUsername($_POST['username']);
+            $usuarioModel->setSenha($_POST['senha']);
+            
+            $usuario = $usuarioModel->verificaLogin();
 
-        if (isset($_POST['username'])) {
-
-            //Verifica usuario
-
-            if (true) {
-                
+            var_dump($usuario);
+            
+            if ($usuario) {
+                echo "OK";        
+               // header("Location: index.php?controller=UsuarioController&action=listar");
             } else {
                 
+                echo "NAO OK";
             }
         }
 

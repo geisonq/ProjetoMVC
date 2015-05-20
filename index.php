@@ -5,20 +5,17 @@ class ClassAutoloader {
         spl_autoload_register(array($this, 'loader'));
     }
 
-    private function loader($className) {
-        
-        if(file_exists('Controller/' . $className . '.php')){
+    private function loader($nomeClasse) {
+        if(file_exists('Controller/' . $nomeClasse . '.php')){
             $pasta = 'Controller/';
-        } elseif(file_exists('Model/' . $className . '.php')) {
+        } elseif(file_exists('Model/' . $nomeClasse . '.php')) {
             $pasta = 'Model/';
         }
         
-         include_once $pasta . $className . '.php';
-        
+         include_once $pasta . $nomeClasse . '.php';
     }
 
 }
-
 new ClassAutoloader();
 
 if (isset($_GET['controller'])) {
@@ -30,7 +27,7 @@ if (isset($_GET['controller'])) {
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    $action = 'listar';
+    $action = 'login';
 }
 
 $controller = new $controller();
