@@ -1,7 +1,4 @@
 <?php
-
-include_once 'Model/Model.php';
-
 class UsuarioModel extends Model {
 
     private $username;
@@ -45,6 +42,20 @@ class UsuarioModel extends Model {
     }
 
     /**
+     * Método para retornar todos os usúarios do banco de dados
+     * @access public
+     * @param 
+     * @return array
+     */
+    public function select($orderBy) {
+        $sql = "SELECT * FROM USUARIO ORDER BY  " . $orderBy;
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    /**
      * Método para salvar um usuário no banco de dados
      * @access public
      * @param 
@@ -68,10 +79,10 @@ class UsuarioModel extends Model {
      */
     public function update() {
         $stmt = $this->conexao->prepare("UPDATE USUARIO SET"
-                                                . " username = :username, "
-                                                . " senha = :senha,"
-                                                . " email = :email"
-                                                . " WHERE id = :id");
+                . " username = :username, "
+                . " senha = :senha,"
+                . " email = :email"
+                . " WHERE id = :id");
 
         $stmt->bindValue(':username', $this->getUsername());
         $stmt->bindValue(':senha', $this->getSenha());
@@ -80,20 +91,6 @@ class UsuarioModel extends Model {
 
 
         return $stmt->execute();
-    }
-
-    /**
-     * Método para retornar todos os usúarios do banco de dados
-     * @access public
-     * @param 
-     * @return array
-     */
-    public function select($orderBy) {
-        $sql = "SELECT * FROM USUARIO ORDER BY  " . $orderBy;
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll();
     }
 
     /**

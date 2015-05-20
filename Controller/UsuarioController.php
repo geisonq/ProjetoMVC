@@ -1,10 +1,24 @@
 <?php
-
-include_once 'Model/UsuarioModel.php';
-
 class UsuarioController {
 
     private $usuarioModel;
+
+    public function login() {
+
+
+        if (isset($_POST['username'])) {
+
+            //Verifica usuario
+
+            if (true) {
+                
+            } else {
+                
+            }
+        }
+
+        include('View/Usuario/login.php');
+    }
 
     public function inserir() {
         $msg = FALSE;
@@ -44,11 +58,11 @@ class UsuarioController {
 
     public function listar() {
         $orderBy = 'id';
-        
-        if(isset($_GET['orderBy'])) {
+
+        if (isset($_GET['orderBy'])) {
             $orderBy = $_GET['orderBy'];
         }
-        
+
         $usuarioModel = new UsuarioModel();
         $usuarios = $usuarioModel->select($orderBy);
 
@@ -56,7 +70,7 @@ class UsuarioController {
     }
 
     public function atualizar() {
-        
+
         $usuarioModel = new UsuarioModel();
         $msg = '';
 
