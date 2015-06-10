@@ -67,7 +67,6 @@ class CategoriaController {
 
         if ($_GET['id']) {
             $categoriaModel->setId($_GET['id']);
-
             $categoria = $categoriaModel->selectById();
         }
 

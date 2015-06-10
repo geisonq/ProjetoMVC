@@ -1,25 +1,25 @@
 <?php
+
 class UsuarioController {
 
     private $usuarioModel;
 
     public function login() {
 
+        $msg = false;
+
         if (isset($_POST['username']) && isset($_POST['senha'])) {
             $usuarioModel = new UsuarioModel();
             $usuarioModel->setUsername($_POST['username']);
             $usuarioModel->setSenha($_POST['senha']);
-            
+
             $usuario = $usuarioModel->verificaLogin();
 
-            var_dump($usuario);
-            
             if ($usuario) {
-                echo "OK";        
-               // header("Location: index.php?controller=UsuarioController&action=listar");
+                $_SESSION['login'] = $usuario;
+                header("Location: index.php?controller=UsuarioController&action=listar");
             } else {
-                
-                echo "NAO OK";
+                $msg = "Senha ou Usuario Invalidos!";
             }
         }
 
@@ -27,6 +27,7 @@ class UsuarioController {
     }
 
     public function inserir() {
+        Auth::bloquearAcesso();
         $msg = FALSE;
 
         if (isset($_POST['username'])) {
@@ -46,6 +47,7 @@ class UsuarioController {
     }
 
     public function deletar() {
+        Auth::bloquearAcesso();
         $msg = FALSE;
 
         if ($_GET['id']) {
@@ -63,6 +65,9 @@ class UsuarioController {
     }
 
     public function listar() {
+
+        Auth::bloquearAcesso();
+
         $orderBy = 'id';
 
         if (isset($_GET['orderBy'])) {
@@ -76,7 +81,7 @@ class UsuarioController {
     }
 
     public function atualizar() {
-
+        Auth::bloquearAcesso();
         $usuarioModel = new UsuarioModel();
         $msg = '';
 

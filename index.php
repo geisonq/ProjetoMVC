@@ -1,4 +1,8 @@
 <?php
+
+session_start();
+include_once "Libs/Auth.php";
+
 class ClassAutoloader {
 
     public function __construct() {

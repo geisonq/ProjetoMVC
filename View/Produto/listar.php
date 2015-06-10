@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cadastrar</title>
+        <title>Listar</title>
         <!-- Bootstrap -->
         <link href="www/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="www/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -48,51 +48,56 @@
                         <li>
                             <a href="index.php?controller=UsuarioController&action=inserir"></i> Cadastrar Usuario</a>
                         </li>
-                        <li >
+                        <li>
                             <a href="index.php?controller=UsuarioController&action=listar"></i> Listar Usuario</a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="index.php?controller=CategoriaController&action=inserir"></i> Cadastrar Categoria</a>
                         </li>
                         <li>
                             <a href="index.php?controller=CategoriaController&action=listar"></i> Listar Categoria</a>
                         </li>
+                        <li>
+                            <a href="index.php?controller=ProdutoController&action=inserir"></i> Cadastrar Produto</a>
+                        </li>
+                        <li class="active">
+                            <a href="index.php?controller=ProdutoController&action=listar"></i> Listar Produto</a>
+                        </li>                         
                     </ul>
                 </div>
                 <!--/span-->
                 <div class="span9" id="content">
+
+
                     <div class="row-fluid">
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Atualizar de Categoria</div>
+                                <div class="muted pull-left">Produtos</div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
-                                    <form action="index.php?controller=CategoriaController&action=atualizar&id=<?php echo $categoria['ID']?>"  method="POST" class="form-horizontal">
-                                        <fieldset>
-
-                                            <?php if ($msg) : ?>
-                                                <div class="alert alert-info">
-                                                    <button class="close" data-dismiss="alert">x</button>
-                                                    <strong>Info!</strong> <?php echo $msg  ?>
-                                                </div>
-                                            <?php endif; ?>
-
-                                            <div class="control-group">
-                                                <label class="control-label" for="nome" >Nome</label>
-                                                <div class="controls">
-                                                    <input class="input-xlarge focused" id="nome" type="text" name="nome" value="<?php echo $categoria['NOME']; ?>">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-actions">
-                                                <button type="submit" class="btn btn-primary">Salvar</button>
-                                                <button type="reset" class="btn">Cancel</button>
-                                            </div>
-                                        </fieldset>
-                                    </form>
-
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Nome</th>
+                                                <th>Descricao</th>
+                                                <th>Opcoes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($produtos as $linha) : ?>
+                                                <tr>
+                                                    <td><?php echo $linha['ID'] ?></td>
+                                                    <td><?php echo $linha['NOME'] ?></td>
+                                                    <td><?php echo $linha['DESCRICAO'] ?></td>
+                                                    <td><a href="index.php?controller=ProdutoController&action=atualizar&id=<?php echo $linha['ID'] ?>">Editar</a> - 
+                                                        <a href="index.php?controller=ProdutoController&action=deletar&id=<?php echo $linha['ID'] ?>">Deletar</a></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

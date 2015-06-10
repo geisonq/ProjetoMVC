@@ -1,6 +1,10 @@
 <?php
 class CategoriaModel extends Model {
-
+    private  $id;
+    private  $nome;
+    
+   
+ 
     function getId() {
         return $this->id;
     }
@@ -17,7 +21,7 @@ class CategoriaModel extends Model {
         $this->nome = $nome;
     }
 
-    public function select($orderBy) {
+    public function select($orderBy = 'ID') {
         $sql = "SELECT * FROM CATEGORIA ORDER BY  " . $orderBy;
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
@@ -26,7 +30,7 @@ class CategoriaModel extends Model {
     }
 
     public function insert() {
-        $stmt = $this->conexao->prepare("INSERT INTO CATEGORIA(nome) VALUES (:nome)");
+        $stmt = $this->conexao->prepare("INSERT INTO CATEGORIA(NOME) VALUES (:nome)");
         $stmt->bindValue(':nome', $this->getNome());
 
         return $stmt->execute();
@@ -34,7 +38,7 @@ class CategoriaModel extends Model {
 
     public function update() {
         $stmt = $this->conexao->prepare("UPDATE CATEGORIA SET"
-                . " nome = :nome "
+                . " NOME = :nome "
                 . " WHERE id = :id");
 
         $stmt->bindValue(':nome', $this->getNome());

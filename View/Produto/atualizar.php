@@ -48,15 +48,21 @@
                         <li>
                             <a href="index.php?controller=UsuarioController&action=inserir"></i> Cadastrar Usuario</a>
                         </li>
-                        <li >
+                        <li>
                             <a href="index.php?controller=UsuarioController&action=listar"></i> Listar Usuario</a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="index.php?controller=CategoriaController&action=inserir"></i> Cadastrar Categoria</a>
                         </li>
                         <li>
                             <a href="index.php?controller=CategoriaController&action=listar"></i> Listar Categoria</a>
                         </li>
+                        <li class="active">
+                            <a href="index.php?controller=ProdutoController&action=inserir"></i> Cadastrar Produto</a>
+                        </li>
+                        <li>
+                            <a href="index.php?controller=ProdutoController&action=listar"></i> Listar Produto</a>
+                        </li>                        
                     </ul>
                 </div>
                 <!--/span-->
@@ -65,27 +71,63 @@
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Atualizar de Categoria</div>
+                                <div class="muted pull-left">Atualizar de Produto</div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
-                                    <form action="index.php?controller=CategoriaController&action=atualizar&id=<?php echo $categoria['ID']?>"  method="POST" class="form-horizontal">
+                                    <form action="index.php?controller=ProdutoController&action=atualizar&id=<?php echo $produto['ID']?>" method="POST" class="form-horizontal">
                                         <fieldset>
 
                                             <?php if ($msg) : ?>
                                                 <div class="alert alert-info">
                                                     <button class="close" data-dismiss="alert">x</button>
-                                                    <strong>Info!</strong> <?php echo $msg  ?>
+                                                    <strong>Info!</strong> <?php echo $msg ?>
                                                 </div>
                                             <?php endif; ?>
 
                                             <div class="control-group">
-                                                <label class="control-label" for="nome" >Nome</label>
+                                                <label class="control-label" for="nome">Nome</label>
                                                 <div class="controls">
-                                                    <input class="input-xlarge focused" id="nome" type="text" name="nome" value="<?php echo $categoria['NOME']; ?>">
+                                                    <input class="input-xlarge focused" id="nome" type="text" value="<?php echo $produto['NOME']?>" name="nome">
                                                 </div>
                                             </div>
 
+                                            <div class="control-group">
+                                                <label class="control-label" for="descricao">Descricao</label>
+                                                <div class="controls">
+                                                    <input class="input-xlarge focused" id="descricao" type="text" value="<?php echo $produto['DESCRICAO']?>" name="descricao">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="preco">Preco</label>
+                                                <div class="controls">
+                                                    <input class="input-xlarge focused" id="preco" type="text" value="<?php echo $produto['PRECO']?>" name="preco">
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="valor">Valor</label>
+                                                <div class="controls">
+                                                    <input class="input-xlarge focused" id="valor" type="text" value="<?php echo $produto['VALOR']?>" name="valor">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="quantidade">Quantidade</label>
+                                                <div class="controls">
+                                                    <input class="input-xlarge focused" id="quantidade" type="text" value="<?php echo $produto['QUANTIDADE']?>" name="quantidade">
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                <label class="control-label" for="categoria">Categoria</label>
+                                                <div class="controls">
+                                                    <input class="input-xlarge focused" id="categoria" type="text" value="<?php echo $produto['IDCATEGORIA']?>" name="categoria">
+                                                </div>
+                                            </div>
                                             <div class="form-actions">
                                                 <button type="submit" class="btn btn-primary">Salvar</button>
                                                 <button type="reset" class="btn">Cancel</button>

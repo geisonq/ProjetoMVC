@@ -69,7 +69,7 @@
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
-                                    <form action="index.php?controller=UsuarioController&action=inserir" method="POST" class="form-horizontal">
+                                    <form action="index.php?controller=UsuarioController&action=atualizar&id=<?php echo $usuario['ID']?>" method="POST" class="form-horizontal">
                                         <fieldset>
                                             <div class="control-group">
                                                 <label class="control-label" for="username">Username</label>

@@ -5,8 +5,11 @@ class Model {
     
     private $host = 'localhost';
     private $dbname = 'lpwii';
+   // private $dbname = 'u898720715_lpwii';
     private $usuario = 'root';
+   // private $usuario = 'u898720715_lpwii';
     private $senha = '';
+    //private $senha = 'lpw123';
 
     function __construct() {
         $this->conexao = new PDO(
