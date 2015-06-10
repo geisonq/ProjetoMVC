@@ -25,13 +25,13 @@ new ClassAutoloader();
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
 } else {
-    $controller = 'UsuarioController';
+    $controller = 'SiteController';
 }
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    $action = 'login';
+    $action = 'index';
 }
 
 $controller = new $controller();

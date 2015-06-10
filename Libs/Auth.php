@@ -1,5 +1,4 @@
 <?php
-
 class Auth {
     static function bloquearAcesso(){
         if(!isset($_SESSION['login'])){
